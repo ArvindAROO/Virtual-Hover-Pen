@@ -13,7 +13,7 @@
 ### Pre requisites: 
 - Python 3 installed.
 - OpenCV installed.
-
+- The requirements can be easily installed by using this command `pip install -r requirements.txt`
 ### Instructions to run:
 
 - First clone the project
@@ -23,3 +23,4 @@
 
 ### Contributors:
 - [Sharanya Mukherjee](https://github.com/sharanya02)
+- [Arvind Krishna](https://github.com/ArvindAROO)
