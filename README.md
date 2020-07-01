@@ -14,6 +14,8 @@
 - Python 3 installed.
 - OpenCV installed.
 - The requirements can be easily installed by using this command `pip install -r requirements.txt`
+- Make sure you have camera access given to all applications and any firewalls are closed before starting.
+- Also, any kind of antivirus ight block the access to camera, in the name of spying, that also must be taken care of.
 ### Instructions to run:
 
 - First clone the project
