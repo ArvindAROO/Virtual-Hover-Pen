@@ -8,11 +8,13 @@ def callback(value):
 
 
 def setup_trackbars(range_filter):
+    #generate a namedWindow for reference
     cv2.namedWindow("Trackbars", 0)
 
     for i in ["MIN", "MAX"]:
         v = 0 if i == "MIN" else 255
-
+        #allocate the value of v as 0 if minimum or 255 if its maximum
+        
         for j in range_filter:
             cv2.createTrackbar("%s_%s" % (j, i), "Trackbars", v, 255, callback)
 
@@ -62,15 +64,17 @@ def main():
             frame_to_thresh = image.copy()
         else:
             frame_to_thresh = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+            
     else:
         camera = cv2.VideoCapture(0)
 
     setup_trackbars(range_filter)
 
     while True:
+        #keep iterating until quiting
         if args['webcam']:
             ret, image = camera.read()
-
+            
             if not ret:
                 break
 
@@ -80,9 +84,10 @@ def main():
                 frame_to_thresh = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
         v1_min, v2_min, v3_min, v1_max, v2_max, v3_max = get_trackbar_values(range_filter)
-
+        #get the ranges of values for v1, v2, v3
+        
         thresh = cv2.inRange(frame_to_thresh, (v1_min, v2_min, v3_min), (v1_max, v2_max, v3_max))
-
+        
         if args['preview']:
             preview = cv2.bitwise_and(image, image, mask=thresh)
             cv2.imshow("Preview", preview)
